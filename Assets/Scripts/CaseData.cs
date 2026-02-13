@@ -8,15 +8,3 @@ public class CaseData : MonoBehaviour
 {
     public int indexCase;
 }
-
-
-
-/*
- * À faire
- * Utiliser un ancre
- * Bouton Repositionner la grille
- * Bouton recommencer
- * Bouton fin de partie(recommencer)
- * Mise en évidence de la ligne gagnante
- *  
- */

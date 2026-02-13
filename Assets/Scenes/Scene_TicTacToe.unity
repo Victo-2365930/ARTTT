@@ -2109,9 +2109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   plateauplace: 0
   finDePartie: 0
-  jeuActuel: 000000000000000000000000000000000000000000000000000000000000000000000000
   currentPlayerText: {fileID: 35467730}
-  winnerText: {fileID: 1876925756}
+  endGameText: {fileID: 1876925756}
   instruction: {fileID: 68185843}
   Prefab_TTT: {fileID: 1146811100643639699, guid: d9db66c4eea428549a404ae24509e1f6, type: 3}
   Prefab_X: {fileID: 6438703038540479660, guid: 972804cb6b95ed0419f5edd5f1e96d61, type: 3}

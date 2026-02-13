@@ -1,10 +1,17 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
+/// <summary>
+/// Pour gérer l'utilisation de l'AR dans le projet
+/// </summary>
 public class ARPlacementManager : MonoBehaviour
 {
     public GameController controller;
 
+    /// <summary>
+    /// Pour gérer les clic en Raycast
+    ///     S'il on clic une case, on exécute la fonction de jouer un tour
+    ///     Sinon, si le plateau n'est pas posé, on exécute la fonction pour le placer
+    /// </summary>
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

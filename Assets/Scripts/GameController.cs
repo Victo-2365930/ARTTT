@@ -1,10 +1,8 @@
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// Controleur de la partie de Tic Tac Toe
+/// Pour gérer la logique de la partie de Tic Tac Toe
 /// </summary>
 public class GameController : MonoBehaviour
 {
@@ -16,26 +14,32 @@ public class GameController : MonoBehaviour
     private bool joueur = false; // false = X | true = O
     private int caseActuelleInt = 0;
     private Collider caseActuelleCollider;
-    public int[] jeuActuel = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //0 = rien | 1 = X | 2 = O
+    private int[] jeuActuel = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //0 = rien | 1 = X | 2 = O
 
     //Gestion du UI
+    [Tooltip("Texte qui définie le joueur actuel")]
     public TextMeshProUGUI currentPlayerText;
-    public TextMeshProUGUI winnerText;
+    [Tooltip("Texte lors de la fin du jeu")]
+    public TextMeshProUGUI endGameText;
+    [Tooltip("Texte d'instruction")]
     public TextMeshProUGUI instruction;
 
     //Gestion des Prefabs
-    private GameObject plateauTTT;
+    [Tooltip("Prefab du plateau de tic tac toe")] 
     public GameObject Prefab_TTT;
+    [Tooltip("Prefab du X")] 
     public GameObject Prefab_X;
+    [Tooltip("Prefab du O")] 
     public GameObject Prefab_O;
+    [SerializeField]
+    private GameObject plateauTTT;
+    public GameObject GetPlateauTTT()
+    {
+        return plateauTTT;
+    }
 
 
     #endregion
-
-    private void Start()
-    {
-        
-    }
 
     /// <summary>
     /// Pour jouer le tour de Tic Tac Toe
@@ -122,8 +126,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void PartieNulle()
     {
-        winnerText.gameObject.SetActive(true);
-        winnerText.text = "La partie est nulle :(";
+        endGameText.gameObject.SetActive(true);
+        endGameText.text = "La partie est nulle :(";
         currentPlayerText.text = "Partie Terminée";
         finDePartie = true;
     }
@@ -133,8 +137,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void PartieTerminee()
     {
-        winnerText.gameObject.SetActive(true);
-        winnerText.text = "Joueur " + (joueur ? "O" : "X") + " a gagné!";
+        endGameText.gameObject.SetActive(true);
+        endGameText.text = "Joueur " + (joueur ? "O" : "X") + " a gagné!";
 
         currentPlayerText.text = "Partie Terminée";
         finDePartie = true;
@@ -151,17 +155,6 @@ public class GameController : MonoBehaviour
         currentPlayerText.text = "Tour de : " + (joueur ? "O":"X");
     }
 
-
-    /*
-    private void ligneGagnante(int caseA, int caseB)
-    {
-        Vector3 positionA = groupeCase[caseActuelleInt].transform.position;
-        Vector3 positionB = groupeCase[caseActuelleInt].transform.position;
-
-        //placer le prefab et mettre la rotation?
-    }
-    */
-
     /// <summary>
     /// Pour remettre les variables du jeu au stade de début
     /// Logique FindGameObjectsWithTag par Gemini
@@ -173,8 +166,8 @@ public class GameController : MonoBehaviour
         caseActuelleInt = 0;
         caseActuelleCollider = null;
         currentPlayerText.text = "Tour de : " + (joueur ? "O" : "X");
-        winnerText.gameObject.SetActive(false);
-        winnerText.text = "";
+        endGameText.gameObject.SetActive(false);
+        endGameText.text = "";
 
         for (int i = 0; i < jeuActuel.Length; i++)
         {
