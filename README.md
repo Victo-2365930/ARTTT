@@ -28,16 +28,16 @@ Voici les prompts utilisés qui influent le code dans les scripts. À noter que 
 
 Unity 3D Code C#, AR de Google
 Lorsque je sélectionne un GameObject avec un tag, mais que je dois savoir lequel c'est parmi ce tag, comment est-ce que je l'identifie?
------
+
 C#
 Peux m'aider avec la façon d'écrire la logique
 Au lieu de vérifier :
 if((groupeCase[0] == groupeCase[1] & groupeCase[1] == groupeCase[2]) || (groupeCase[3] == groupeCase[4] && groupeCase[4] == groupeCase[5])
 
 Faire un groupe de condition et utiliser une boucle pour vérifier chaque condition. Toujours 3 cases et je voudrais la logique pas la réponse.
---
+
 Unity 3D, code C#
 Comment faire dans mon script pour sélectionner toutes les instance d'un prefab x avec un tag?
---
+
 Unity 3D, AR, google XR origin, script C#
 J'aimerais désactiver le Trackable (scan) lorsque je place un gameObject
