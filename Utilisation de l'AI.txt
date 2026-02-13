@@ -16,3 +16,7 @@ Faire un groupe de condition et utiliser une boucle pour vérifier chaque condit
 --
 Unity 3D, code C#
 Comment faire dans mon script pour sélectionner toutes les instance d'un prefab x avec un tag?
+--
+Unity 3D, AR, google XR origin, script C#
+
+J'aimerais désactiver le Trackable (scan) lorsque je place un gameObject

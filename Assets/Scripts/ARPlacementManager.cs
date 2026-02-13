@@ -1,13 +1,9 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ARPlacementManager : MonoBehaviour
 {
-    
-    public GameObject tictactoePrefab;
-
     public GameController controller;
-
-    private bool plateauPlace = false;
 
     void Update()
     {
@@ -20,14 +16,15 @@ public class ARPlacementManager : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Case"))
                 {
-                    CaseData donnees = hit.collider.GetComponent<CaseData>(); //Gemini
+                    CaseData donnees = hit.collider.GetComponent<CaseData>();
                     controller.JouerTour(donnees.indexCase, hit.collider);
                 }
-                else if(plateauPlace == false)
+                else if(controller.plateauplace == false)
                 {
+                    Vector3 position = hit.point;
                     Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                    GameObject nouveauTicTacToe = Instantiate(tictactoePrefab, hit.point, rotation);
-                    plateauPlace = true;
+                    controller.PlacerTicTacToe(position, rotation);
+                    controller.plateauplace = true;
                 }
             }
         }

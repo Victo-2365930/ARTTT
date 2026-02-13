@@ -9,21 +9,39 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     #region Variables
+
+    //Gestion du jeu
+    public bool plateauplace = false;
     public bool finDePartie = false;
     private bool joueur = false; // false = X | true = O
     private int caseActuelleInt = 0;
     private Collider caseActuelleCollider;
     public int[] jeuActuel = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //0 = rien | 1 = X | 2 = O
 
+    //Gestion du UI
     public TextMeshProUGUI currentPlayerText;
     public TextMeshProUGUI winnerText;
+    public TextMeshProUGUI instruction;
 
+    //Gestion des Prefabs
+    private GameObject plateauTTT;
+    public GameObject Prefab_TTT;
     public GameObject Prefab_X;
     public GameObject Prefab_O;
 
 
     #endregion
 
+    private void Start()
+    {
+        
+    }
+
+    /// <summary>
+    /// Pour jouer le tour de Tic Tac Toe
+    /// </summary>
+    /// <param name="indexCase">Numéro de la case affecté, int entre 0 et 8</param>
+    /// <param name="laCase"> Collider de la case</param>
     public void JouerTour(int indexCase, Collider laCase)
     {
         if (finDePartie || jeuActuel[indexCase] != 0) return;
@@ -99,13 +117,20 @@ public class GameController : MonoBehaviour
         if (partieNulle) PartieNulle();
     }
 
+    /// <summary>
+    /// Pour activer les éléments de la partie nulle
+    /// </summary>
     private void PartieNulle()
     {
-        Debug.Log("La partie est nulle");
+        winnerText.gameObject.SetActive(true);
+        winnerText.text = "La partie est nulle :(";
         currentPlayerText.text = "Partie Terminée";
         finDePartie = true;
     }
 
+    /// <summary>
+    /// Pour activer les éléments d'une partie terminée
+    /// </summary>
     private void PartieTerminee()
     {
         winnerText.gameObject.SetActive(true);
@@ -116,12 +141,17 @@ public class GameController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Pour effectuer le changement de joueur
+    /// </summary>
     private void ChangementJoueur()
     {
         joueur = !joueur;
 
         currentPlayerText.text = "Tour de : " + (joueur ? "O":"X");
     }
+
+
     /*
     private void ligneGagnante(int caseA, int caseB)
     {
@@ -142,7 +172,7 @@ public class GameController : MonoBehaviour
         joueur = false;
         caseActuelleInt = 0;
         caseActuelleCollider = null;
-        currentPlayerText.text = "Scanning";
+        currentPlayerText.text = "Tour de : " + (joueur ? "O" : "X");
         winnerText.gameObject.SetActive(false);
         winnerText.text = "";
 
@@ -157,4 +187,36 @@ public class GameController : MonoBehaviour
             Destroy(prefab);
         }
     }
+
+    /// <summary>
+    /// Pour placer la planche de TicTacToe dans l'environnement
+    /// </summary>
+    /// <param name="position">Vector3 où placer la planche</param>
+    /// <param name="rotation">Quaternion de la rotation de l'objet</param>
+    public void PlacerTicTacToe(Vector3 position, Quaternion rotation)
+    {
+        if(plateauTTT is null)
+        {
+            plateauTTT = Instantiate(Prefab_TTT, position, rotation);
+        }
+        else
+        {
+            plateauTTT.SetActive(true);
+            plateauTTT.transform.position = position;
+            plateauTTT.transform.rotation = rotation;
+        }
+        instruction.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Pour masquer la planche de TicTacToe
+    /// </summary>
+    public void MasquerTicTacToe()
+    {
+        plateauTTT.SetActive(false);
+        plateauplace = false;
+        instruction.gameObject.SetActive(true);
+    }
+
+
 }
