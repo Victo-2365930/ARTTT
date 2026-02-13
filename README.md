@@ -1,20 +1,20 @@
-#Tic Tac Toe en Réalité augmentée
-##Par Yohan Rajotte
-###Étudiant de 3e année au Cégep de Victoriaville
-####Version unity 6000.3.4f1, 2026-02-13
+# Tic Tac Toe en Réalité augmentée
+## Par Yohan Rajotte
+### Étudiant de 3e année au Cégep de Victoriaville
+#### Version unity 6000.3.4f1, 2026-02-13
 
-###Description
+### Description
 Projet en Unity 3D simulation utilisant Google XR.
 Le projet permet de jouer une partie de tic tac toe dans un environnement virtuel de Unity.
 
-###Packages utilisés
+### Packages utilisés
 Google ARCore XR Plugin v6.3.3
 AR Foundation
 XR Core Utilities v2.5.3
 XR Plugin Management v4.5.3
 Pour la liste complète, lire le fichier ./Package/manifest.json
 
-###Défis rencontrés
+### Défis rencontrés
 1) Initialisation de la logique entre l'utilisation du AR et la logique de jeu
 2) Organisation et séparation des scripts dans l'environnement Unity
 3) L'ancrage?
